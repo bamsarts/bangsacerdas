@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+<h2>Form Regis</h2>
+<form id="valid" method="GET" action="">
+<table>
+	<thead>
+		
+	</thead>
+	<tbody>
+		<tr>
+			<td>Nama</td>
+			<td><input type="text" name="name" id="name" value="" placeholder="" required></td>
+		</tr>
+		<tr>
+			<td>No Telepon</td>
+			<td><input type="number" name="telp" id="telp" value="" placeholder="" required></td>
+		</tr>
+		<tr>
+			<td>email</td>
+			<td><input type="email" name="email" id="email" value="" placeholder="" required></td>
+		</tr>
+		<tr>
+			<td>alamat</td>
+			<td><textarea name="alamat" id="alamat" required></textarea></td>
+		</tr>
+		<tr>
+			<td>jenis</td>
+			<td>
+			<select name="gender" id="gender">
+				<option value="Laki-laki">laki-laki</option>
+				<option value="perempuan">Perempuan</option>
+			</select>
+			</td>
+		</tr>
+		<tr>
+			<td>password</td>
+			<td><input type="password" name="pass" id="pass" value="" placeholder="" required></td>
+		</tr>
+	</tbody>
+</table>
+<input type="submit" name="" value="Submit">
+</form>
+<script src="jquery-3.1.1.js" type="text/javascript" charset="utf-8"></script>
+<script src="jquery.validate.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="jquery.validate.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" charset="utf-8">
+	$(document).ready(function() {
+
+		$.validator.setDefaults({
+			submitHandler: function() {
+				alert("submitted!");
+			}
+		});
+
+		$("#valid").validate({
+			rules:{
+				name : "required",
+				telp : {
+					required : true,
+					maxlength : 13
+				},
+				jenis : "required",
+				email : {
+					required : true,
+					email : true
+				},
+				alamat : "required",
+				pass : {
+					required : true,
+					minlength : 5
+				}
+			},
+			messages: {
+				name: "Please enter name",
+				telp: {
+					required: "Please enter a telp",
+					maxlength: "kuran panjang"
+				},
+				jenis: "Please enter a valid email address",
+				email: {
+					required: "Please enter a username",
+					email: "Your username must consist of at least 2 characters"
+				},
+				alamat: "Please select at least 2 topics",
+				pass: {
+					required: "Please enter a username",
+					minlength: "Your username must consist of at least 2 characters"
+				}
+			}
+		});
+	});
+</script>
+</body>
+</html>
